@@ -1,9 +1,10 @@
 {
-    "name": "trashsnap-server",
-    "description": "Server za best app ever trashnaaap!",
-    "author": "GreenPlease",
-    "dependencies": {
-        "express": "latest",
-        "mongodb": "latest"
-    }
+  "name": "trashsnap-server",
+  "description": "Server za best app ever trashnaaap!",
+  "author": "GreenPlease",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "latest",
+    "mongodb": "latest"
+  }
 }
