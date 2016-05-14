@@ -29,8 +29,8 @@ var entries=[{
 app.post('/api/v1/upload', function(req, res) {
   var entry = { 
     text: req.body.text,  
-    latitude: req.body.latitude,
-    longitude: req.bod.longitude
+    latitude: parseFloat(req.body.latitude),
+    longitude: parseFloat(req.body.longitude)
   };
   entries.push(entry);
   res.send('ty');
