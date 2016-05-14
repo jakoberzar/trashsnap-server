@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({
 var entries=[{
     latitude: 46,
     longitude: 14,
-    text: 'yo'
+    text: 'yo1'
   },{
     latitude: 46,
     longitude: 14.2,
