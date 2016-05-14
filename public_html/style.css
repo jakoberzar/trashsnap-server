@@ -6,4 +6,17 @@ html, body {
 
 #map {
     height: 100%;
+    margin: 0 !important;
+}
+
+.list {
+    height: 100%;
+    
+    
+}
+
+.content {
+    margin: 0;
+    height: 100%;
+    
 }
