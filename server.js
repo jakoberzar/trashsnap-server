@@ -31,8 +31,13 @@ var entries=[{
 ];
 
 app.post('/api/v1/upload', function(req, res) {
-  var entry = req.body;
+  var entry = { 
+    text: req.body.text,  
+    latitude: req.body.latitude,
+    longitude: req.bod.longitude
+  };
   entries.push(entry);
+  res.send('ty');
 });
 
 app.get('/api/v1/entries', function(req, res) {
