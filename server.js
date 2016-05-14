@@ -3,8 +3,8 @@ var app = express();
 var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
 var multer = require('multer');
-var util = require('util');
-var fs = require('fs');
+/*var util = require('util');
+var fs = require('fs');*/
 
 app.use('/', express.static(__dirname + '/public_html'));
 app.get('/', function (req, res) {
@@ -38,32 +38,26 @@ app.post('/api/v1/upload', function(req, res) {
   entries.push(entry);
   res.send('ty');
 });
-
-// Some file upload dark sorcery
 var storage = multer.diskStorage({
-    destination: function (req, file, callback) {
-        callback(null, './uploads');
-    },
-    filename: function (req, file, callback) {
-        console.log(file.fieldname);
-        callback(null, file.originalname);
-    }
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/')
+  },
+  filename: function (req, file, cb) {
+    cb(null, req.body.id + ".jpg")
+  }
+})
+var upload = multer({ storage: storage })
+app.post('/api/v1/upload/photo', upload.single('image'), function(req, res, next) {
+  console.log("Can you say gg! " + req.body.id);
+  var entry = { 
+    text: req.body.text,  
+    latitude: parseFloat(req.body.latitude),
+    longitude: parseFloat(req.body.longitude)
+  };
+  entries.push(entry);
+  res.end("gg uploaded lol that was ez!")
 });
 
-//var upload = multer({ storage: storage }).single('image');
-var upload = multer({ storage: storage }).single('image');
-
-app.post('/api/v1/upload/photo', function(req, res) {
-  upload(req, res, function (err) {
-      console.log(req.file);
-      if (err) {
-          console.log("Photo API ERROR: "+err);
-          return res.end("Error uploading file.");
-      }
-      console.log("SUCCESS");
-      res.end("File is uploaded");
-  });
-});
 
 app.get('/api/v1/entries', function(req, res) {
   res.setHeader('Content-Type', 'application/json');

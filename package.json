@@ -6,8 +6,6 @@
     "body-parser": "^1.15.1",
     "express": "latest",
     "mongodb": "latest",
-    "multer": "latest",
-    "util": "latest",
-    "fs": "latest"
+    "multer": "latest"
   }
 }
