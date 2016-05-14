@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
+var multer = require('multer');
 
 app.use('/', express.static(__dirname + '/public_html'));
 app.get('/', function (req, res) {
@@ -13,23 +14,50 @@ app.use(bodyParser.urlencoded({
   extended:true
 }));
 
-
 var entries=[{
     latitude: 46,
     longitude: 14,
-    text: 'yo1'
-  },{
+    text: 'yo'
+  }, {
     latitude: 46,
     longitude: 14.2,
     text: 'yo'
   }
-
 ];
 
+// Upload brez slike
 app.post('/api/v1/upload', function(req, res) {
-  var entry = req.body;
+  var entry = { 
+    text: req.body.text,  
+    latitude: parseFloat(req.body.latitude),
+    longitude: parseFloat(req.body.longitude)
+  };
+  console.log(req.body.photo);
   entries.push(entry);
+  res.send('ty');
 });
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname)
+  }
+})
+var upload = multer({ storage: storage })
+
+// Upload s sliko
+app.post('/api/v1/upload/photo', upload.single('image'), function(req, res, next) {
+  var entry = { 
+    text: req.body.text,  
+    latitude: parseFloat(req.body.latitude),
+    longitude: parseFloat(req.body.longitude)
+  };
+  entries.push(entry);
+  res.end("gg uploaded lol that was ez!")
+});
+
 
 app.get('/api/v1/entries', function(req, res) {
   res.setHeader('Content-Type', 'application/json');
