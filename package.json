@@ -1,0 +1,9 @@
+{
+    "name": "trashsnap-server",
+    "description": "Server za best app ever trashnaaap!",
+    "author": "GreenPlease",
+    "dependencies": {
+        "express": "latest",
+        "mongodb": "latest"
+    }
+}
