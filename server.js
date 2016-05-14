@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var MongoClient = require('mongodb').MongoClient;
 
 app.use('/', express.static(__dirname + '/public_html'));
 app.get('/', function (req, res) {
@@ -12,11 +13,6 @@ app.use(bodyParser.urlencoded({
   extended:true
 }));
 
-var marker = {
-  latitude: 46,
-  longitude: 14,
-  text: 'yo'
-};
 
 var entries=[{
     latitude: 46,
