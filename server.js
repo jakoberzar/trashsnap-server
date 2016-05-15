@@ -7,16 +7,18 @@ var monk = require('monk');
 var db = monk('localhost:27017/baza1');
 
 var entries=[{
-    latitude: 46,
-    longitude: 14,
-    text: 'yo1',
-    imglink: '/uploads/bosti.jpg'
+    latitude: 46.365733,
+    longitude: 14.308714,
+    text: 'Tržič kao',
+    imglink: '/uploads/bosti.jpg',
+    time: '2016-12-23 22:11:33'
     
   }, {
     latitude: 46,
     longitude: 14.2,
     text: 'yo2',
-    imglink: '/uploads/klasika.jpg'
+    imglink: '/uploads/klasika.jpg',
+    time: '2016-1-14 22:44:33'
   }
 ];
 
@@ -66,6 +68,12 @@ app.post('/api/v1/upload', function(req, res) {
     latitude: parseFloat(req.body.latitude),
     longitude: parseFloat(req.body.longitude)
   };
+  
+  if (latitude == 0 && longitude == 0) {
+    latitude = 46.0500176;
+    longitude = 14.469030400000065;
+  }
+  
   console.log(req.body.photo);
   entries.push(entry);
   res.send('ty');
