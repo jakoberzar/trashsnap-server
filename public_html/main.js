@@ -26,7 +26,7 @@ $.get("/api/v1/entries", function(data) {
         
         mark.addListener('click', function() {
             $("#slika").html("<img class='slika1' src='" + trenutni.imglink + "' >");
-            $("#naslov").html("FUCK YOU " + f.text);
+            $("#naslov").html(f.text);
             $("#datum").html("Datum");
             $("#opis").html("Opis");
         });

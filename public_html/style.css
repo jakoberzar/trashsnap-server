@@ -24,7 +24,7 @@ html, body {
 
 #slika {
     margin: 0;
-    height: 33%;
+    height: 37%;
     /*border: 1px black solid;*/
     display: inline-block;
     overflow: hidden;
@@ -62,12 +62,12 @@ html, body {
 #top {
     background-color: #388E3C;
     padding: 0;
+    
 }
 
 .glyphicon-remove {
     background-color: #388E3C;
-    border: 1px white solid;
-    margin-top: 3px;
+    margin-top: 5px;
     color: white;
     margin-left: 5px;
     border-radius: 3px;
@@ -75,4 +75,11 @@ html, body {
 
 .glyphicon-remove:active {
     visibility: hidden;
+    background-color: #388E3C;
+    border: 0 !important;
+}
+
+button {
+    background-color: #388E3C;
+    border: 0;
 }
