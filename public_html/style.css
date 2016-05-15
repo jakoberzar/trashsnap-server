@@ -11,24 +11,25 @@ html, body {
 
 .list {
     height: 100%;
-    background-color: pink;
+    background-color: white;
     padding: 0;
 }
 
 .content {
     margin: 0;
     height: 100%;
-    font-size: 2em;
+    font-size: 1.5em;
     font-family: helvetica, sans-serif, Verdana;
 }
 
 #slika {
     margin: 0;
     height: 33%;
-    border: 1px black solid;
+    /*border: 1px black solid;*/
     display: inline-block;
     overflow: hidden;
     padding: 0px;
+    background-color: #388E3C;
 }
 
 .slika1 {
@@ -39,13 +40,35 @@ html, body {
     display: inline-block;
     overflow: hidden;
     transform:translateY(-25%);
+    margin-bottom: 0;
 }
 
 #opis {
     background-color: white;
     font-size: 0.75em;
+    padding-top: 0;
 }
 
 .basic {
     padding: 20px;
+}
+
+#naslov {
+    color: white;
+    background-color: #388E3C;
+    margin-top: -10px;
+}
+
+#top {
+    background-color: #388E3C;
+    padding: 0;
+}
+
+.glyphicon-remove {
+    background-color: #388E3C;
+    border: 1px white solid;
+    margin-top: 3px;
+    color: white;
+    margin-left: 5px;
+    border-radius: 3px;
 }
