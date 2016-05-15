@@ -34,3 +34,5 @@ node_modules
 
 # VS Code things
 .vscode
+
+public_html/uploads

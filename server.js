@@ -39,9 +39,10 @@ app.post('/api/v1/upload', function(req, res) {
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads/')
+    cb(null, 'public_html/uploads/')
   },
   filename: function (req, file, cb) {
+    console.log(file);
     cb(null, file.originalname)
   }
 })
@@ -52,7 +53,9 @@ app.post('/api/v1/upload/photo', upload.single('image'), function(req, res, next
   var entry = { 
     text: req.body.text,  
     latitude: parseFloat(req.body.latitude),
-    longitude: parseFloat(req.body.longitude)
+    longitude: parseFloat(req.body.longitude),
+    imgid: req.body.id,
+    imglink: '/uploads/' + req.body.id
   };
   entries.push(entry);
   res.end("gg uploaded lol that was ez!")
