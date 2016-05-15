@@ -35,6 +35,12 @@ app.post('/api/v1/upload', function(req, res) {
     latitude: parseFloat(req.body.latitude),
     longitude: parseFloat(req.body.longitude)
   };
+  
+  if (latitude == 0 && longitude == 0) {
+    latitude = 46.0500176;
+    longitude = 14.469030400000065;
+  }
+  
   console.log(req.body.photo);
   entries.push(entry);
   res.send('ty');
