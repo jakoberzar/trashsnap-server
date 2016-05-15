@@ -32,5 +32,15 @@ $.get("/api/v1/entries", function(data) {
         });
     });
     console.log(data);
-})
+});
+
+$(document).ready(function() {
+    console.log("hi gays00");
+    $(".yolo").click(function() {
+        console.log("hi gays007");
+        $("#hi").hide(1000);
+    });
+});
+
+
 
