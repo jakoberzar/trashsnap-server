@@ -22,27 +22,6 @@ var entries=[{
   }
 ];
 
-
-/*
-
-function dodajGaNot(vnos, callback) {
-  entries.push(entry);
-  MongoClient.connect("mongodb://localhost:27017/baza1", function(err, db) {
-    if(!err) {
-      console.log("We are connected");
-      db.createCollection('entries', function(err, collection) {
-        if (err) {console.error(err) }
-        else {
-          entries = collection;
-          collection.insert(vnos);
-        }
-        callback(true);
-      });
-    } else { callback(false) }
-    
-  });
-}*/
-
 // Make our db accessible to our router
 app.use(function(req,res,next){
     req.db = db;
@@ -69,10 +48,6 @@ app.post('/api/v1/upload', function(req, res) {
     longitude: parseFloat(req.body.longitude)
   };
   
-  if (latitude == 0 && longitude == 0) {
-    latitude = 46.0500176;
-    longitude = 14.469030400000065;
-  }
   
   console.log(req.body.photo);
   entries.push(entry);
@@ -100,6 +75,10 @@ app.post('/api/v1/upload/photo', upload.single('image'), function(req, res, next
     imglink: '/uploads/' + req.body.id + ".jpg",
     time: req.body.time
   };
+  if (entry.latitude == 0 && entry.longitude == 0) {
+    entry.latitude = 46.0500176;
+    entry.longitude = 14.469030400000065;
+  }
   var db = req.db;
   var collection = db.get('entries');
   collection.insert(entry);

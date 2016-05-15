@@ -27,18 +27,15 @@ $.get("/api/v1/entries", function(data) {
         var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + trenutni.latitude
                     + "," + trenutni.longitude + "&sensor=true";
         $.getJSON( url, function( json ) { //thanks for my data
-            //console.log(json.results[0]);
-            address = json.results[0].formatted_address;
+            trenutni.address = json.results.length ? json.results[0].formatted_address : "";
         });
         console.log(trenutni.time);
         var time1 = trenutni.time.split(" ")[0].split("-");
         var date = time1[2] + "." + time1[1] + "." + time1[0];
-        //console.log(marker[i].title);
-        //var naslov = marker[i].title;
         
         mark.addListener('click', function() {
             $("#slika").html("<img class='slika1' src='" + trenutni.imglink + "' >");
-            $("#naslov").html(address);
+            $("#naslov").html(trenutni.address);
             $("#datum").html(date);
             $("#opis").html(f.text);
             $("#map").removeClass("col-md-12").addClass("col-md-9");
