@@ -17,11 +17,14 @@ app.use(bodyParser.urlencoded({
 var entries=[{
     latitude: 46,
     longitude: 14,
-    text: 'yo'
+    text: 'yo1',
+    imglink: '/uploads/bosti.jpg'
+    
   }, {
     latitude: 46,
     longitude: 14.2,
-    text: 'yo'
+    text: 'yo2',
+    imglink: '/uploads/klasika.jpg'
   }
 ];
 
@@ -55,7 +58,8 @@ app.post('/api/v1/upload/photo', upload.single('image'), function(req, res, next
     latitude: parseFloat(req.body.latitude),
     longitude: parseFloat(req.body.longitude),
     imgid: req.body.id,
-    imglink: '/uploads/' + req.body.id
+    imglink: '/uploads/' + req.body.id + ".jpg",
+    time: req.body.time
   };
   entries.push(entry);
   res.end("gg uploaded lol that was ez!")
