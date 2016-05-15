@@ -11,34 +11,46 @@ var entries = [];
 
 
 $.get("/api/v1/entries", function(data) {
+    console.log(data);
     var marker = [];
     data.forEach(function(f) {
         var trenutni = f;
         var mk = {
             position: {lat: trenutni.latitude, lng: trenutni.longitude},
             map: map,
-            title: 'World! ' + f.text
+            title: ""
         };
         var mark = new google.maps.Marker(mk)
         marker.push(mark);
+        
+        var address = ""; // get address
+        var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + trenutni.latitude
+                    + "," + trenutni.longitude + "&sensor=true";
+        $.getJSON( url, function( json ) { //thanks for my data
+            //console.log(json.results[0]);
+            address = json.results[0].formatted_address;
+        });
+        console.log(trenutni.time);
+        var time1 = trenutni.time.split(" ")[0].split("-");
+        var date = time1[2] + "." + time1[1] + "." + time1[0];
         //console.log(marker[i].title);
         //var naslov = marker[i].title;
         
         mark.addListener('click', function() {
             $("#slika").html("<img class='slika1' src='" + trenutni.imglink + "' >");
-            $("#naslov").html(f.text);
-            $("#datum").html("Datum");
-            $("#opis").html("Opis");
+            $("#naslov").html(address);
+            $("#datum").html(date);
+            $("#opis").html(f.text);
+            $("#map").removeClass("col-md-12").addClass("col-md-9");
+            $("#hi").css("visibility","visible");
         });
     });
-    console.log(data);
 });
 
 $(document).ready(function() {
-    console.log("hi gays00");
     $(".yolo").click(function() {
-        console.log("hi gays007");
-        $("#hi").hide(1000);
+        $("#map").removeClass("col-md-9").addClass("col-md-12");
+        google.maps.event.trigger(map, 'resize');
     });
 });
 

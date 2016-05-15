@@ -15,16 +15,18 @@ app.use(bodyParser.urlencoded({
 }));
 
 var entries=[{
-    latitude: 46,
-    longitude: 14,
-    text: 'yo1',
-    imglink: '/uploads/bosti.jpg'
+    latitude: 46.365733,
+    longitude: 14.308714,
+    text: 'Tržič kao',
+    imglink: '/uploads/bosti.jpg',
+    time: '2016-12-23 22:11:33'
     
   }, {
     latitude: 46,
     longitude: 14.2,
     text: 'yo2',
-    imglink: '/uploads/klasika.jpg'
+    imglink: '/uploads/klasika.jpg',
+    time: '2016-1-14 22:44:33'
   }
 ];
 
