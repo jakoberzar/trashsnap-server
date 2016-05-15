@@ -11,12 +11,41 @@ html, body {
 
 .list {
     height: 100%;
-    
-    
+    background-color: pink;
+    padding: 0;
 }
 
 .content {
     margin: 0;
     height: 100%;
-    
+    font-size: 2em;
+    font-family: helvetica, sans-serif, Verdana;
+}
+
+#slika {
+    margin: 0;
+    height: 33%;
+    border: 1px black solid;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0px;
+}
+
+.slika1 {
+    width: 100%;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+    overflow: hidden;
+    transform:translateY(-25%);
+}
+
+#opis {
+    background-color: white;
+    font-size: 0.75em;
+}
+
+.basic {
+    padding: 20px;
 }
